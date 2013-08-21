@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+
+#mainmenu {
+	position:absolute;
+	top:20%;
+	left:50%;
+	margin-left:-200px;
+	width:400px;
+}
+
+#menubut {
+	text-align:left;
+	padding:5px;
+	width:100%;
+	margin-bottom:5px;
+}
+
+#menubut:hover {
+	background-color:#CCC;
+}
+
+.menubuttxt {
+	font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	font-size:18px;
+	text-decoration:none;
+	color:#000000;
+}
