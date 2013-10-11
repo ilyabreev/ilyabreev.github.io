@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Shower Presentation Engine</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+	<!--
+		To apply styles to the certain slides
+		set slide ID to get needed elements
+		-->
+	<style>
+		#Cover h2 {
+			margin:30px 0 0;
+			color:#FFF;
+			text-align:center;
+			font-size:70px;
+			}
+		#Cover p {
+			margin:10px 0 0;
+			text-align:center;
+			color:#FFF;
+			font-style:italic;
+			font-size:20px;
+			}
+		#Cover p a {
+			color:#FFF;
+			}
+		#End {
+			background: #ffffff;
+		}
+		#End img {
+			position: absolute;
+			bottom: 30px;
+			right: 30px;
+		}
+	</style>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Регулярные выражения</h1>
+		<p>Илья Бреев <a href="https://www.rotapost.ru">Rotapost.Ru</a></p>
+	</header>
+	<section class="slide cover" id="Cover"><div>
+		<h2>Регулярные выражения</h2>
+		<p>что это?!</p>
+		<img src="pictures/cover.jpg"  alt="">
+	</div></section>
+	<section class="slide"><div>
+		<h2>Что такое регулярное выражение?</h2>
+		<p><b>Регулярное выражение</b> - шаблон (образец), по которому выполняется поиск соответствующего ему фрагмента текста</p>
+		<ul>
+			<li>Задается в виде <b>строки</b></li>
+			<li>Выглядит как набор символов <code>[А-Я]<mark>\d</mark>{3}[А-Я]{2}\<mark>d</mark>{2}RUS</code></li>
+			<li>Умеет <i>искать</i> нужный нам текст, <i>разделять</i> его на части и <i>заменять</i></li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Из чего может состоять регулярное выражение?</h2>
+		<ol>
+			<li class="next">Обычные символы - представляют в выражении сами себя</li>
+			<li class="next">Служебные символы - наделяют регулярное выражение магической силой</li>
+		</ol>
+	</div></section>
+	<section class="slide shout">
+		<div>
+			<h2>Служебные символы</h2>
+			<p class="note">там, где начинается магия</p>		
+		</div>
+	</section>
+	<section class="slide"><div>
+		<h2>Служебные символы</h2>
+		<ol>
+			<li class="next">Один любой символ <code>.</code> (точка)</li>
+			<li class="next">Символьные классы <code>[abc]</code> (один символ из указанного набора)</li>
+			<li class="next">Метасимволы <code>\d</code> (один символ, принадлежащий некой группе)</li>
+			<li class="next">Отрицание <code>[^abc]</code> или <code>\D</code> (один символ, кроме тех, что в наборе)</li>
+			<li class="next">Символ экранирования <code>\</code> (делает из любого служебного символа обычный)</li>
+			<li class="next">Анкоры <code>^some$</code> (обозначают не символ в тексте, а <b>позицию</b>)</li>
+			<li class="next">Квантификаторы <code>{4} + * ?</code> (обозначают количество повторений символа)</li>
+		</ol>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Точка - основа основ</h2>
+		Вместо точки регулярное выражение подразумевает любой символ
+		<code>Frid.y</code> - под эту строку попадают и <i>Friday</i>, и <i>Frid&lt;y</i>, и даже <i>FridЫy</i>
+		Чтобы искать саму точку, её нужно заэкранировать
+		<code>Friday\.</code> - это выражение будет искать в точности строку "Friday." и именно с точкой на конце
+	</div></section>
+	<section class="slide"><div>
+		<h2>Символьные классы</h2>
+		<p>
+			Регулярное выражение подразумевает один из символов указанных внутри квадратных скобок на место, где они указаны
+		</p>
+		<pre><code>Frid<mark class="important">[aoe]</mark>y</code></pre> - совпадут строки <i>Frid<b>a</b>y</i>, <i>Frid<b>o</b>y</i> и <i>Frid<b>e</b>y</i>. А вот <mark><i>FridЫy</i></mark> - нет
+	</div></section>
+	<section class="slide"><div>
+		<h2>Метасимволы</h2>
+		<p>
+			Наделены особым смыслом в том фреймворке, в котором вы работаете. О значениях - <b>читать документацию</b>.
+		</p>
+		<pre><code>Frid<mark class="important">\w</mark>y</code></pre> - на месте \w может стоять любая буква, цифра или знак подчеркивания (таков уж \w)
+	</div></section>
+	<section class="slide"><div>
+		<h2>Анкоры</h2>
+		<p>
+			Указывают движку регулярных выражений на определенную позицию в тексте.
+		</p>
+		<pre><code><mark class="important">^</mark>Friday<mark class="important">$</mark></code></pre> - строка будет найдена только тогда, когда в ней будет только Friday.
+		Если убрать символы анкоров, то будет найдена и строка <mark>In Friday We Trust</mark>.
+	</div></section>
+	<section class="slide"><div>
+		<h2>Квантификаторы</h2>
+		<p>Позволяют задать количество вхождений символа или группы в искомую строку. Примеры:
+		<ul>
+			<li><code>\d{3}</code> три идущие подряд цифры</li>
+			<li><code>[a-z]{4,8}</code> от 4 до 8 любых латинских букв, идущих подряд</li>
+			<li><code>a+</code> хотя бы одна буква "a", но можно и больше</li>
+			<li><code>.*</code> 0 или больше любых символов</li>
+			<li><code>https?</code> необязательная буква s в конце (и http и https совпадут)</li>
+		</ul>
+		<p>Все они по умолчанию - <b>жадины</b></p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Более продвинутые механизмы</h2>
+		<pre>
+			<code><mark class="important">(</mark><mark>Friday</mark><mark class="important">)</mark> - группа с порядковым номером</code>
+			<code><mark class="important">(?&lt;tag&gt;</mark><mark>Friday</mark><mark class="important">)</mark> - группа с именем</code>
+			<code><mark class="important">(?:</mark><mark>Friday</mark><mark class="important">)</mark> - незахватывающая группа</code>
+			<code><mark>Friday</mark><mark class="important">(?= </mark><mark>we</mark><mark class="important">)</mark> - Friday we</code>
+			<code><mark>Friday</mark><mark class="important">(?! </mark><mark>we</mark><mark class="important">)</mark> - Friday us</code>
+			<code><mark class="important">(?&lt;=</mark><mark>In </mark><mark class="important">)</mark><mark>Friday</mark> - In Friday</code>
+			<code><mark class="important">(?&lt;!</mark><mark>In </mark><mark class="important">)</mark><mark>Friday</mark> - Out Friday</code>
+		</pre> 
+	</div></section>
+	<section class="slide"><div>
+		<img src="pictures/stark.jpg" />
+	</div></section>
+	<section class="slide"><div>
+		<h2>Как этим пользоваться в .NET?</h2>
+		<pre>
+			<code><b>using</b> <mark class="important">System.Text.RegularExpressions;</mark></code>
+			<code>var regex = new <mark>Regex</mark>(@"Hello, world", </code>
+			<code>	<mark class="important">RegexOptions.Compiled</mark>);</code>
+			<code>var isMatch = regex.<mark>IsMatch</mark>("Hello, Friday");</code>
+			<code>var matches = regex.<mark>Matches</mark>("Hello, world and friday");</code>
+			<code>String result;</code>
+			<code>foreach (Match match in matches)</code>
+			<code>	result = match.<mark>Value</mark>;</code>
+		</pre> 
+	</div></section>
+	<section class="slide"><div>
+		<h2>Полезно</h2>
+		<ul>
+			<li>Visual Studio Extension: <a href="http://visualstudiogallery.msdn.microsoft.com/16b9d664-d88c-460e-84a5-700ab40ba452">Regex Tester</a></li>
+			<li><a href="http://regexp.org">Regexp.org</a></li>
+			<li><a href="http://msdn.microsoft.com/en-us/library/hs600312.aspx">Общий обзор регулярных выражений в .NET</a></li>
+			<li><a href="http://msdn.microsoft.com/en-us/library/az24scfc.aspx">Краткая справка по спецсимволам .NET Regex</a></li>
+		</ul>
+	</div></section>
+	<section class="slide" id="End"><div>
+		<h2>Регулярные выражения</h2>
+		<p class="note">Илья Бреев, <a href="https://www.rotapost.ru">Rotapost.ru</a></p>
+		<ul>
+			<li><a href="http://twitter.com/ilyabreev">@ilyabreev</a></li>
+			<li><a href="mailto:ilyabreev@gmail.com">ilyabreev@gmail.com</a></li>
+			<li>skype: <b>ilyabreev</b></li>
+		</ul>
+		<img src="pictures/ufo.png" />
+	</div></section>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2013 Yours Truly, Famous Inc. -->
+</body>
+</html>
