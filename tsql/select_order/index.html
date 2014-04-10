@@ -153,3 +153,32 @@
 	<script src="shower/shower.min.js"></script>
 </body>
 </html>
+<!--
+	/*
+	Вывести список юзеров и количество блогов, которые у них есть
+	Сверху - те юзеры, у которых больше всего блогов
+*/
+SELECT rp_user.id, COUNT(rp_blog.id) AS blogCount
+FROM rp_user
+LEFT JOIN rp_blog ON rp_blog.rp_user_id = rp_user.id
+GROUP BY rp_user.id
+ORDER BY blogCount DESC
+
+/*
+	Вывести список юзеров, у которых > 10 рефералов
+*/
+SELECT rp_user.id, COUNT(ref.id) AS refCount
+FROM rp_user
+INNER JOIN rp_user AS ref ON ref.ref_user_id = rp_user.id
+GROUP BY rp_user.id
+HAVING COUNT(ref.id) > 10
+ORDER BY refCount
+
+
+/*
+	Вывести только те типы предложений, по которым есть предложения
+*/
+SELECT offer_type, offer_subtype 
+FROM rp_offer
+GROUP BY offer_type, offer_subtype
+	-->
