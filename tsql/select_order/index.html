@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>T-SQL SELECT</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+	<style>
+		#Cover {
+			background-color: #ffffff;
+			background-image: url('pictures/rotapost.png');
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		#Cover h2 {
+			margin:10px 0 0;
+			color:#006CA7;
+			text-align:center;
+			font-size:70px;
+			}
+		#Cover p {
+			margin:10px 0 0;
+			text-align:center;
+			color:#FF7B22;
+			font-style:italic;
+			font-size:20px;
+			}
+		#Cover p a {
+			color:#FFF;
+			}
+		#End {
+			background: #ffffff;
+		}
+		#End img {
+			position: absolute;
+			bottom: 30px;
+			right: 30px;
+		}
+	</style>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>T-SQL SELECT</h1>
+		<p>логический порядок и некоторые особенности</p>
+	</header>
+	<section class="slide cover" id="Cover"><div>
+		<h2>T-SQL SELECT</h2>
+		<p>уровень 1</p>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>Троичная логика</h2>
+		да, нет, не знаю
+	</div></section>
+	<section class="slide"><div>
+		<h2>Троичная логика</h2>
+		<ul>
+			<li>TRUE = !FALSE</li>
+			<li>FALSE = !TRUE</li>
+			<li>UNKNOWN = !UNKNOWN (NULL > 42; NULL = NULL; X + NULL > Y)<br/>
+				<span>
+					<mark>ON, WHERE, HAVING</mark> (FALSE)
+					<mark>CHECK</mark> (TRUE)
+				</span>
+			</li>
+		</ul>
+		<mark>NULL</mark> WHERE - всегда разный; UNIQUE, GROUP BY, ORDER BY - всегда одинаковый
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>SELECT</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Общий порядок</h2>
+		<pre><code><mark>SELECT</mark> DISTINCT TOP ...</code>
+		<code><mark>FROM</mark> ...</code>
+		<code>... <mark>JOIN</mark> ... ON ...</code>
+		<code><mark>WHERE</mark> ...</code>
+		<code><mark>GROUP BY</mark> ...</code>
+		<code><mark>HAVING</mark> ...</code>
+		<code><mark>ORDER BY</mark></code>
+		</pre>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>FROM</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>FROM</h2>
+		Определяет исходные таблицы, из которых будут браться данные
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>JOIN</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>JOIN</h2>
+		<ol>
+			<li>CROSS JOIN - все возможные комбинации строк из двух таблиц</li>
+			<li>Условие ON (TRUE) - отбор только необходимых строк</li>
+			<li>OUTER JOIN (LEFT, RIGHT, FULL) - несовпавшие строки</li>
+		</ol>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>WHERE</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>WHERE</h2>
+		<ul>
+			<li>Оставит только те строки, для которых условие = TRUE</li>
+		</ul>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>GROUP BY</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>GROUP BY</h2>
+		<ul>
+			<li>По одному результату в группе</li>
+			<li>Следующие шаги работают со скалярными значениями</li>
+		</ul>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>HAVING</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>HAVING</h2>
+		Как WHERE после GROUP BY
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>SELECT</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>SELECT</h2>
+		<ul>
+			<li>Только выражения из списка</li>
+			<li>В следующем шаге можно использовать псевдонимы выражений (AS)</li>
+			<li><mark>DISTINCT</mark> удаляет дубликаты</li>
+			<li><mark>TOP</mark> отбирает первые N или % строк, глядя на ORDER BY</li>
+		</ul>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>ORDER BY</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>ORDER BY</h2>
+		<ul>
+			<li>Сортирует по указанному столбцу</li>
+			<li>Результат - не таблица, как во всех предыдущих шагах, а <mark>КУРСОР</mark></li>
+		</ul>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>Спасибо!</h2>
+	</div></section>
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+</body>
+</html>
