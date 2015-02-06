@@ -1,0 +1,75 @@
+<html ng-app="BillApp">
+  <head>
+    <meta charset="utf-8" />
+    <script src="angular.min.js"></script>
+    <script src="angular-route.min.js"></script>
+    <script type="text/ng-template" id="product-detail.html">
+      <h1>Детали продукта {{product.title}} (id: {{product.id}})</h1>
+      Наименование: {{product.title}} <br/>
+      Стоимость, р.: {{product.amount}}
+    </script>
+    <script type="text/ng-template" id="bill.html">
+      <h1>Чек</h1>
+      <table id="bill">
+        <tr>
+          <th>Наименование</th>
+          <th>Стоимость, руб.</th>
+        </tr>
+        <tr ng-repeat="item in items">
+          <td><a href="#/product/{{item.id}}">{{item.title}}</a></td>
+          <td>{{item.amount}}</td>
+        </tr>
+        <tr>
+          <td>Итого:</td>
+          <td>{{total}}</td>
+        </tr>
+      </table>
+    </script>
+    <script>
+      var billApp = angular.module('BillApp', ['ngRoute']);
+
+      var items = [
+          { id: 1, title: 'Фрукты', amount: 115.6 },
+          { id: 2, title: 'Чай', amount: 80.45 },
+          { id: 3, title: 'Мясо', amount: 309.6 },
+          { id: 4, title: 'Овощи', amount: 237 }
+        ];
+
+      billApp.config(['$routeProvider', function($routeProvider) {
+        $routeProvider
+          .when('/bill', {
+            templateUrl: 'bill.html',
+            controller: 'BillCtrl'
+          })
+          .when('/product/:productId', {
+            templateUrl: 'product-detail.html',
+            controller: 'ProductDetailCtrl'
+          })
+          .otherwise({
+            redirectTo: '/bill'
+          });
+      }]);
+
+      billApp.controller('BillCtrl', function ($scope) {
+        $scope.total = 0;
+        $scope.items = items;
+        
+        for (var i = 0; i < $scope.items.length; i++) {
+          $scope.total += $scope.items[i].amount;
+        }
+        
+        $scope.total = Math.round($scope.total * 100) / 100;
+      });
+
+      billApp.controller('ProductDetailCtrl', function ($scope, $routeParams) {
+        $scope.product = items.filter(function(value, index, arr) {
+          if (value.id == $routeParams.productId) {
+            return value;
+          }
+        })[0];
+      });
+    </script>
+  </head>
+  <body ng-view>
+  </body>
+</html>
