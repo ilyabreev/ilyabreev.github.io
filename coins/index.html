@@ -1,0 +1,83 @@
+<html ng-app="CoinsApp">
+  <head>
+    <meta charset="utf-8" /> 
+    <title>
+      География моих монет
+    </title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="bootstrap-lightbox.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="ammap/ammap.js"></script>
+    <script src="ammap/maps/js/worldHigh.js"></script>
+    <script src="ammap/themes/light.js"></script>
+    <script src="ammap/lang/ru.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <style>
+      #chartdiv {
+        width: 100%;
+        height: 600px;
+      }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-lightbox.min.css">
+  </head>
+  <body ng-controller="ListCtrl">
+    <div id="chartdiv">
+    </div>
+    <div class="container" id="coinlist">
+      <h2>Наборы</h2>
+      <div ng-repeat="set in filteredSets = (sets | filter:{country:currentCountry})">
+        <h3>{{countries[set.country].name}} ({{currencies[set.currency][0]}}) - {{set.year}} </h3>
+        <table class="table">
+          <tr>
+            <th>Номинал</th>
+            <th>Фото</th>
+            <th>Год</th>
+            <th>Отметка</th>
+          </tr>
+          <tr ng-repeat="coin in set.denominations">
+            <td>{{set.denominations[$index]}} {{set.currency}}</td>
+            <td>
+              <div class="lightbox hide fade"  tabindex="-1" role="dialog" aria-hidden="true">
+                <div class='lightbox-content'>
+                  <img ng-src="{{set.photos[$index]}}">
+                  <div class="lightbox-caption"><p>Your caption here</p></div>
+                </div>
+              </div>
+              <a href="{{set.photos[$index]}}" data-toggle="lightbox"><img ng-src="{{set.photos[$index]}}" width="100" class="img-responsive"/></a>
+            </td>
+            <td>{{set.year}}</td>
+            <td>{{set.mintMark}}</td>
+          </tr>
+        </table>
+      </div>
+      <div ng-hide="filteredSets.length">Нет подходящих наборов</div>
+      <br/>
+      <h2>Монеты</h2>
+      <table class="table">
+        <tr>
+          <th>Номинал</th>
+          <th>Памятная?</th>
+          <th>Год</th>
+          <th>Фото</th>
+          <th>Отметка</th>
+          <th>Описание</th>
+          <th>Количество</th>
+        </tr>
+        <tr ng-repeat="coin in filteredCoins = (coins | filter:{country:currentCountry})">
+          <td>{{coin.denomination}} {{coin.currency}}</td>
+          <td>{{coin.commemorative ? 'да' : 'нет' }}</td>
+          <td>{{coin.year}}</td>
+          <td>
+            <img ng-repeat="url in photos" width="50" ng-src="url" />
+          </td>
+          <td>{{coin.mintmark}}</td>
+          <td>{{coin.description}}</td>
+          <td>{{coin.qty}}</td>
+        </tr>
+      </table>
+      <div ng-hide="filteredCoins.length">Нет подходящих монет</div>
+    </div>
+  </body>
+</html>
