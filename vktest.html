@@ -1,0 +1,21 @@
+<html>
+<head>
+</head>
+<body>
+<script src="http://vk.com/js/api/openapi.js"></script>
+<script>
+function checkVk() {
+    VK.init({
+        apiId: '4925449'
+    });
+    function authInfo(response) {
+        if (response.session) {
+            alert(response.session.mid);
+        }
+    }
+    VK.Auth.getLoginStatus(authInfo);
+}
+checkVk();
+</script>
+</body>
+</html>
