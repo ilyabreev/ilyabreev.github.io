@@ -1,0 +1,22 @@
+<html ng-app="newYearApp">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2016</title>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/jquery.cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="bower_components/blueimp-md5/js/md5.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+  <body ng-controller="mainController">
+    <div class="container">
+      <h1 class="text-center"><span class="glyphicon glyphicon-tree-conifer"></span> 2016</h1>
+      <div id="main">
+        <div ng-view></div>
+      </div>
+    </div>
+  </body>
+</html>
