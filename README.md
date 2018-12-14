@@ -15,4 +15,4 @@
 
 - :closed_book: :ru: [Распределенные алгоритмы. Интуитивный подход](https://www.piter.com/product_by_id/65909628) *Уон Фоккинк, Питер, **2017***
 
-- :orange_book: :en: [The Art of Unit Testing, Second Edition](https://www.manning.com/books/the-art-of-unit-testing-second-edition) *Roy Osherove, Manning **2013*** [alt link](https://yadi.sk/i/UnCNSeEN_j_MnA)
+- :orange_book: :uk: [The Art of Unit Testing, Second Edition](https://www.manning.com/books/the-art-of-unit-testing-second-edition) *Roy Osherove, Manning **2013*** [alt link](https://yadi.sk/i/UnCNSeEN_j_MnA)
