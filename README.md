@@ -11,6 +11,8 @@
 
 - :movie_camera: :uk: [ASP.NET Core Fundamentals](https://www.pluralsight.com/courses/aspdotnet-core-fundamentals) *Pluralsight, Scott Allen, **2016*** [alt link](http://rutracker.org/forum/viewtopic.php?t=5319624)
 
-# etc
+# Development
 
 - :closed_book: :ru: [Распределенные алгоритмы. Интуитивный подход](https://www.piter.com/product_by_id/65909628) *Уон Фоккинк, Питер, **2017***
+
+- :orange_book: :en: [The Art of Unit Testing, Second Edition](https://www.manning.com/books/the-art-of-unit-testing-second-edition) *Roy Osherove, Manning **2013*** [alt link](https://yadi.sk/i/UnCNSeEN_j_MnA)
