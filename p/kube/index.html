@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Основы Kubernetes</h1>
+					<img src="img/kubernetes.png" width="400px" style="border: 0px; background: none; box-shadow: none;" />
+				</section>
+				<section data-background-image="img/architecture.png"></section>
+				<section data-background-image="img/bg.jpg">
+					<h4>Запуск</h4>
+					<pre><code class="bash" data-trim data-noescape>
+kubectl run hello \
+	--image=tutum/hello-world \
+	--port=80 \
+	--generator=run-pod/v1
+					</code></pre>
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<p class="fragment">docker ps?</p>
+					<p class="fragment">kubectl get pods!</p>
+					<img class="fragment" src="img/pods.png" />
+					<img class="fragment" src="img/get_pods.png" />
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<p>
+						<pre><code class="fragment">kubectl expose pod hello --type=NodePort --name hello-http</code></pre>
+					</p>
+					<p>
+						<pre><code class="fragment">kubectl describe svc hello-http</code></pre>
+					</p>
+					<p>
+						<img class="fragment" src="img/describe_svc.png" />
+					</p>
+				</section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg"></section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				],
+				history: true,
+				transition: 'convex'
+			});
+		</script>
+	</body>
+</html>
