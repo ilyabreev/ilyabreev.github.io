@@ -55,9 +55,33 @@ kubectl run hello \
 						<img class="fragment" src="img/describe_svc.png" />
 					</p>
 				</section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg">
+					<h2>Endpoints</h2>
+					<img src="img/5_endpoints.png" />
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<h3>hello-pod.yaml</h3>
+					<p>
+						<pre><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: hello
+  labels:
+    creation_method: yaml
+    env: prod
+    run: hello
+spec:
+  containers:
+    - image: tutum/hello-world
+      name: hello-world
+      ports:
+        - containerPort: 80
+          protocol: TCP</code></pre>
+					</p>
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<pre><code>kubectl apply -f hello-pod.yaml</code></pre>
+				</section>
 				<section data-background-image="img/bg.jpg"></section>
 				<section data-background-image="img/bg.jpg"></section>
 				<section data-background-image="img/bg.jpg"></section>
@@ -158,7 +182,8 @@ kubectl run hello \
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				],
 				history: true,
-				transition: 'convex'
+				transition: 'convex',
+				slideNumber: true
 			});
 		</script>
 	</body>
