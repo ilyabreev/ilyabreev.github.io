@@ -30,7 +30,7 @@
 				</section>
 				<section data-background-image="img/architecture.png"></section>
 				<section data-background-image="img/bg.jpg">
-					<h4>Запуск</h4>
+					<b>Запуск</b>
 					<pre><code class="bash" data-trim data-noescape>
 kubectl run hello \
 	--image=tutum/hello-world \
@@ -41,10 +41,20 @@ kubectl run hello \
 				<section data-background-image="img/bg.jpg">
 					<p class="fragment">docker ps?</p>
 					<p class="fragment">kubectl get pods!</p>
-					<img class="fragment" src="img/pods.png" />
 					<img class="fragment" src="img/get_pods.png" />
 				</section>
 				<section data-background-image="img/bg.jpg">
+					<b>Pod:</b><br/>
+					<img class="fragment" src="img/pods.png" width="600" />
+					<ul>
+						<li class="fragment">основная рабочая единица kubernetes</li>
+						<li class="fragment">живёт только в рамках ноды</li>
+						<li class="fragment">может состоять из нескольких контейнеров</li>
+						<li class="fragment">хилит контейнеры</li>
+					</ul>
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<b>Service</b>
 					<p>
 						<pre><code class="fragment">kubectl expose pod hello --type=NodePort --name hello-http</code></pre>
 					</p>
@@ -56,12 +66,18 @@ kubectl run hello \
 					</p>
 				</section>
 				<section data-background-image="img/bg.jpg">
-					<h2>Endpoints</h2>
-					<img src="img/5_endpoints.png" />
+					<b>Service:</b>
+					<ul>
+						<li class="fragment">служит точкой входа для одного или многих подов</li>
+						<li class="fragment">не управляет подами!</li>
+					</ul>
 				</section>
 				<section data-background-image="img/bg.jpg">
-					<h3>hello-pod.yaml</h3>
-					<p>
+					<b>Endpoints</b><br/>
+					<img src="img/05_endpoints.png" />
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<b>hello-pod.yaml</b>
 						<pre><code>apiVersion: v1
 kind: Pod
 metadata:
@@ -77,93 +93,136 @@ spec:
       ports:
         - containerPort: 80
           protocol: TCP</code></pre>
-					</p>
 				</section>
 				<section data-background-image="img/bg.jpg">
 					<pre><code>kubectl apply -f hello-pod.yaml</code></pre>
 				</section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
-				<section data-background-image="img/bg.jpg"></section>
+				<section data-background-image="img/bg.jpg">
+					<b>ReplicaSet</b>
+					<pre style="font-size: 16px;"><code>apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: hello-replicaset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+	    app: hello
+        run: hello
+    spec:
+      containers:
+      - image: tutum/hello-world
+	    name: hello-world
+	    ports:
+	    - containerPort: 80
+					</code></pre>
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<b>ReplicateSet:</b>
+					<ul>
+						<li class="fragment">контролирует существование нужного количества копий пода</li>
+						<li class="fragment">создает недостающие поды или удаляет лишние</li>
+					</ul>
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<b>ReplicaSet в деле!</b>
+					<img src="img/09_replicaset_deletepod.png" />
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<b>Больше реплик!</b>
+					<img src="img/10_rs_scale.png" />
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<b>Что с сервисом?</b>
+					<img class="fragment" src="img/11_svc_scaled_endpoints.png" />
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<b>DaemonSet</b>
+					<pre style="font-size: 16px;"><code>apiVersion: apps/v1beta2
+kind: DaemonSet
+metadata:
+  name: hello-daemonset
+spec:
+  selector:
+    matchLabels:
+	  app: hello
+  template:
+    metadata:
+      labels:
+		app: hello
+        run: hello
+    spec:
+      containers:
+        - image: tutum/hello-world
+		  name: hello-world
+          ports:
+          - containerPort: 80
+					</code></pre>
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<b>Проверим!</b>
+					<img src="img/13_daemon_set.png" />
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<b>liveness & readiness</b>
+					<ul>
+						<li>liveness - жив ли под? (убить и создать новый)</li>
+						<li>readiness - может ли под принимать трафик? (убрать endpoints на него)</li>
+					</ul>
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<h2>Еще ресурсы?</h2>
+					<ul>
+						<li>Job</li>
+						<li>CronJob</li>
+						<li>PersistentVolume</li>
+						<li>PersistentVolumeClaim</li>
+						<li>ConfigMap</li>
+						<li>Secret</li>
+						<li>StatefulSet</li>
+					</ul>
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<b>Deployment</b><br/>
+					<pre style="font-size: 19px"><code>apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: kubia
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: kubia
+        labels:
+		  app: kubia
+    spec:
+      containers:
+      - image: luksa/kubia:v1
+		name: nodejs
+					</code></pre>
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<b>Статус деплоя</b><br/>
+					<img src="img/20_create_deployment.png"/>
+					<img src="img/20_rollout_status.png"/>
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<b>Если что-то пошло не так...</b><br/>
+					<pre><code>kubectl rollout undo deployment kubia</code></pre>
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<img src="img/internals.png" width="800" />
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<img src="img/unfolding.png" />
+				</section>
+				<section data-background-image="img/bg.jpg">
+					<h1>Вопросы?</h1>
+				</section>
 			</div>
 		</div>
 
