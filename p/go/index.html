@@ -1,82 +1,253 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+        <title>reveal.js</title>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/white.css">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/white.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-					<h1>Go!</h1>
-					<img src="img/go.png" width="550px" style="border: 0px; background: none; box-shadow: none;" />
-				</section>
-				<section>
-					<h1>hello.go</h1>
-					<pre><code class="go" data-trim data-noescape>
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>Go!</h1>
+                    <img src="img/go.png" width="550px" style="border: 0px; background: none; box-shadow: none;" />
+                </section>
+                <section>
+                    <b>hello.go</b>
+                    <pre><code class="go" data-trim data-noescape>
 package main
 
 import "fmt"
 
 func main() {
-	fmt.Println("Hello, Go!")
+    fmt.Println("Hello, Go!")
 }
-					</code></pre>
-				</section>
-				<section>
-					<h1>За что любят Go?</h1>
-					<ul>
-						<li class="fragment">Кросс-платформенность</li>
-						<li class="fragment">Краткость</li>
-						<li class="fragment">Скорость</li>
-						<li class="fragment">Неприхотливость к ресурсам</li>
-						<li class="fragment">Уникальные средства языка</li>
-						<li class="fragment">Огромное количество библиотек</li>
-					</ul>
-				</section>
-				<section>
-				</section>
-				<section>
-					<h1>Вопросы?</h1>
-				</section>
-			</div>
-		</div>
+                    </code></pre>
+                </section>
+                <section>
+                    <b>За что любят Go?</b>
+                    <ul>
+                        <li class="fragment">Кросс-платформенность</li>
+                        <li class="fragment">Краткость</li>
+                        <li class="fragment">Скорость</li>
+                        <li class="fragment">Неприхотливость к ресурсам</li>
+                        <li class="fragment">Уникальные средства языка</li>
+                        <li class="fragment">Огромное количество библиотек</li>
+                    </ul>
+                </section>
+                <section>
+                    <b>packages</b>
+                    <pre><code class="go" data-trim data-noescape>
+package main
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				],
-				history: true,
-				transition: 'convex',
-				slideNumber: true
-			});
-		</script>
-	</body>
+func main() {
+    time := time.Now().UnixNano()
+    fmt.Println("Current time is", time)
+    rand.Seed(time)
+    fmt.Println("My favorite number is", rand.Intn(10))
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <b>functions</b>
+                    <pre><code class="go" data-trim data-noescape>
+package main
+
+import "fmt"
+
+func swap(x, y int) (int, int) {
+    return y, x
+}
+
+func main() {
+    a, b := swap(1, 2)
+    fmt.Println(a, b)
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <b>var</b>
+                    <pre><code class="go" data-trim data-noescape>
+package main
+
+import "fmt"
+
+var i, j int = 1, 2
+
+func main() {
+    k := 3
+    csharp, php, java := true, false, "no!"
+    fmt.Println(i, j, k, csharp, php, java)
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <b>built-in types</b><br/>
+                    <ul>
+                        <li>bool</li>
+                        <li>string</li>
+                        <li>int  int8  int16  int32  int64</li>
+                        <li>uint uint8 uint16 uint32 uint64 uintptr</li>
+                        <li>byte // псевдоним для uint8</li>
+                        <li>rune // псевдоним для int32 (unicode)</li>
+                        <li>float32 float64</li>
+                        <li>complex64 complex128</li>
+                    </ul>
+                </section>
+                <section>
+                    <b>default values</b><br/>
+                    <ul>
+                        <li>false</li>
+                        <li>0</li>
+                        <li>""</li>
+                    </ul>
+                </section>
+                <section>
+                    <b>loop(s)</b>
+                    <pre><code class="go" data-trim data-noescape>
+package main
+
+import "fmt"
+
+func main() {
+    sum := 0
+    for i := 0; i < 10; i++ {
+        sum += i
+    }
+    fmt.Println(sum)
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <b>loop(s)</b>
+                    <pre><code class="go" data-trim data-noescape>
+package main
+
+import "fmt"
+
+func main() {
+    sum, i := 0, 0
+    for i < 10 {
+        sum += i
+        i++
+    }
+    fmt.Println(sum)
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <b>loop(s)</b>
+                    <pre><code class="go" data-trim data-noescape>
+package main
+
+import "fmt"
+
+func main() {
+    for {
+    }
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <b>if/else</b>
+                    <pre><code class="go" data-trim data-noescape>
+package main
+
+import "fmt"
+
+func main() {
+    if v := 2; v > 1 {
+        fmt.Println("OK!")
+    } else {
+        fmt.Println("Don't give a f")
+    }
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <b>defer</b>
+                    <pre><code class="go" data-trim data-noescape>
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("counting")
+    for i := 0; i < 10; i++ {
+        defer fmt.Println(i)
+    }
+    fmt.Println("done")
+}
+                    </code></pre>
+                </section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section></section>
+                <section>
+                    <h1>Вопросы?</h1>
+                </section>
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                dependencies: [
+                    { src: 'plugin/markdown/marked.js' },
+                    { src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ],
+                history: true,
+                transition: 'convex',
+                slideNumber: true
+            });
+        </script>
+    </body>
 </html>
