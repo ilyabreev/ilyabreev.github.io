@@ -326,6 +326,45 @@ func main() {
 }
                     </code></pre>
                 </section>
+                <section data-background-image="img/interfaces.jpg" data-background-opacity="0.5">
+                    <h1>Методы и интерфейсы</h1>
+                </section>
+                <section>
+                    <b>Просто функция</b>
+                    <pre><code class="go" data-trim data-noescape>
+type Vertex struct {
+    X, Y float64
+}
+
+func (v *Vertex) Abs() float64 {
+    return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+
+func main() {
+    v := Vertex{3, 4}
+    fmt.Println(v.Abs())
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <b>Интерфейс</b>
+                    <pre><code class="go" data-trim data-noescape>
+type I interface {
+    M()
+}
+type T struct {
+    S string
+}
+func (t T) M() {
+    fmt.Println(t.S)
+}
+
+func main() {
+    var i I = T{"hello"}
+    i.M()
+}
+                    </code></pre>
+                </section>
                 <section data-background-image="img/features.jpg" data-background-opacity="0.5">
                     <h1>Особые средства языка</h1>
                 </section>
@@ -365,26 +404,62 @@ func main() {
 }
                     </code></pre>
                 </section>
-                <section></section>
-                <section></section>
-                <section></section>
-                <section></section>
-                <section></section>
-                <section></section>
-                <section></section>
-                <section></section>
-                <section></section>
-                <section></section>
-                <section></section>
-                <section></section>
-                <section></section>
-                <section></section>
-                <section></section>
-                <section></section>
-                <section></section>
                 <section>
+                    <b>goroutines</b>
                     <pre><code class="go" data-trim data-noescape>
+func say(s string) {
+    for i := 0; i < 5; i++ {
+        time.Sleep(100 * time.Millisecond)
+        fmt.Println(s)
+    }
+}
+
+func main() {
+    go say("world")
+    say("hello")
+}
                     </code></pre>
+                </section>
+                <section>
+                    <b>channels</b>
+                    <pre><code class="go" data-trim data-noescape>
+func fibonacci(n int, c chan int) {
+    x, y := 0, 1
+    for i := 0; i < n; i++ {
+        c <- x
+        x, y = y, x+y
+    }
+    close(c)
+}
+func main() {
+    c := make(chan int, 10)
+    go fibonacci(cap(c), c)
+    for i := range c {
+        fmt.Println(i)
+    }
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <b>mux</b>
+                    <pre><code class="go" data-trim data-noescape>
+func fibonacci(c, quit chan int) {
+    x, y := 0, 1
+    for {
+        select {
+        case c <- x:
+            x, y = y, x+y
+        case <-quit:
+            fmt.Println("quit")
+            return
+        }
+    }
+}
+                </code></pre>
+                </section>
+                <section>
+                    <h1>DEMO!</h1>
+                    <b><a href="http://gitlab.local/rota/tg-bot">http://gitlab.local/rota/tg-bot</a></b>
                 </section>
                 <section>
                     <h1>Вопросы?</h1>
