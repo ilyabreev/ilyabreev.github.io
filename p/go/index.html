@@ -290,26 +290,6 @@ func main() {
                     </code></pre>
                 </section>
                 <section>
-                    <b>range</b>
-                    <pre><code class="go" data-trim data-noescape>
-package main
-import "fmt"
-
-type Vertex struct {
-    Lat, Long float64
-}
-
-func main() {
-    m := map[string]Vertex{
-        "Bell Labs": { 40.68433, -74.39967 },
-    }
-    for _, v := range m {
-        fmt.Println(v)
-    }
-}
-                    </code></pre>
-                </section>
-                <section>
                     <b>pointers</b>
                     <pre><code class="go" data-trim data-noescape>
 package main
@@ -346,6 +326,9 @@ func main() {
 }
                     </code></pre>
                 </section>
+                <section data-background-image="img/features.jpg" data-background-opacity="0.5">
+                    <h1>Особые средства языка</h1>
+                </section>
                 <section>
                     <b>defer</b>
                     <pre><code class="go" data-trim data-noescape>
@@ -359,6 +342,26 @@ func main() {
         defer fmt.Println(i)
     }
     fmt.Println("done")
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <b>range</b>
+                    <pre><code class="go" data-trim data-noescape>
+package main
+import "fmt"
+
+type Vertex struct {
+    Lat, Long float64
+}
+
+func main() {
+    m := map[string]Vertex{
+        "Bell Labs": { 40.68433, -74.39967 },
+    }
+    for _, v := range m {
+        fmt.Println(v)
+    }
 }
                     </code></pre>
                 </section>
